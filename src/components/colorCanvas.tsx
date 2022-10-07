@@ -1,4 +1,4 @@
-import { useHexaColors } from "@/hooks/useHexaColors"
+import { useRandomHexaColor } from "@/hooks/useHexaColors"
 import { useRef, useState } from "react";
 import { useEffect } from "react";
 import { tw, style } from 'twind/style';
@@ -18,7 +18,7 @@ function ColorCanvas () {
         canvas.width = canvas.offsetWidth;
         canvas.height = canvas.offsetHeight;
         
-        context.fillStyle = `#${useHexaColors()}`
+        context.fillStyle = `#${useRandomHexaColor()}`
         context.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
     }
     

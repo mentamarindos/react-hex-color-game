@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { tw } from 'twind/style';
-import { useHexaColors } from '@/hooks/useHexaColors'
+import { useRandomHexaColor } from '@/hooks/useHexaColors'
 
 
 function GameButton () {
 
-    const [HexaColor, setHexaColor] = useState( useHexaColors() )
+    const [HexaColor, setHexaColor] = useState( useRandomHexaColor() )
 
     const BaseButtonStyles = tw`hover:bg-blue-300
     text-gray-900

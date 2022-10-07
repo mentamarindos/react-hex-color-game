@@ -4,7 +4,6 @@ import GameButton from "@/components/gameButtons";
 import { ButtonLayout, MainLayout } from '@/layouts';
 
 function App() {
-
   return (
     <MainLayout>
       <div>
