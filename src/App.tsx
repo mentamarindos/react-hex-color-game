@@ -1,16 +1,19 @@
-import { useState } from 'react'
-import { tw } from "twind"
+import { useEffect, useRef } from "react";
 import ColorCanvas from "@/components/colorCanvas";
-import GameButtons from "@/components/gameButtons";
-
+import GameButton from "@/components/gameButtons";
+import { ButtonLayout, MainLayout } from '@/layouts';
 
 function App() {
 
   return (
-    <div className={tw`grid h-screen place-items-center`}>
-      <ColorCanvas></ColorCanvas>
-      <GameButtons></GameButtons>
-    </div>
+    <MainLayout>
+      <div>
+        <ColorCanvas/>
+        <ButtonLayout>
+          { [...Array(3).keys()].map( ()=> <GameButton/>) }
+        </ButtonLayout>
+      </div>
+    </MainLayout>
   )
 }
 

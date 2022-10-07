@@ -1,21 +1,27 @@
-import { tw } from 'twind';
-import { useHexaColors } from '@/hooks/useHexaColors'
-import { useEffect } from 'react';
 import { useState } from 'react';
+import { tw } from 'twind/style';
+import { useHexaColors } from '@/hooks/useHexaColors'
 
-function GameButtons () {
 
-    const [first, setFirst] = useState( useHexaColors() )
-    const [second, setSecond] = useState( useHexaColors() )
-    const [third, setThird] = useState( useHexaColors() )
+function GameButton () {
+
+    const [HexaColor, setHexaColor] = useState( useHexaColors() )
+
+    const BaseButtonStyles = tw`hover:bg-blue-300
+    text-gray-900
+    font-sans
+    px-4 py-1
+    font-extrabold
+    bg-blue-200
+    `
+    const ButtonStyles = tw(BaseButtonStyles) 
 
     return (
-        <div className={ tw`flex border-1 rounded bg-blue-200` }>
-            <button className={tw``}>{ first }</button>
-            <button className={tw``}>{ second }</button>
-            <button className={tw``}>{ third }</button>
-        </div>
+        <>
+        <button className={ButtonStyles}> #{ HexaColor } </button>
+        </>
     )
 }
 
-export default GameButtons 
+
+export default GameButton

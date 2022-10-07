@@ -1,23 +1,37 @@
 import { useHexaColors } from "@/hooks/useHexaColors"
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useEffect } from "react";
 import { tw, style } from 'twind/style';
 
 
 function ColorCanvas () {
 
-    const [twStyles, setTwStyles] = useState('')
+    const [boxStyles, set_BoxStyles] = useState('')
+    const canvasRef: any = useRef()
+
+    const drawCanvas = () => {
+        const canvas = canvasRef.current;
+        const context = canvas.getContext("2d")
+
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        
+        context.fillStyle = `#${useHexaColors()}`
+        context.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+    }
     
     useEffect(() => {
-        const randomBackground = style({base: `bg-[#${useHexaColors()}]` })
-        const boxSize = tw`w-80 h-80`
-        const _styles = tw(boxSize, randomBackground(`max-w-screen-lg min-w-[50pt] h-20]`))
-        setTwStyles(_styles)
+       drawCanvas()
     }, [])
 
     return (
         <>
-            <div className={twStyles}>CANVAS</div>
+         <h1 className={tw`text-center text-4xl font-mono`}>Which color?</h1>
+         <div className={tw`w-[320px] h-[300px]`}>
+            <canvas ref={canvasRef}></canvas>
+         </div>
         </>
     )
 }
