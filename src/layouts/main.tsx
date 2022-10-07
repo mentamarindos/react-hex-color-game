@@ -1,9 +1,10 @@
 import { tw } from "twind"
+import { IChildrenProp } from "@/interfaces";
 
-export const MainLayout = (props: any) => {
+export const MainLayout = ({ children }: IChildrenProp) => {
     return (
       <div className={tw`flex justify-center items-center h-screen w-screen`}>
-        {props.children}
+        { children }
       </div>
     )
 }

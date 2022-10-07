@@ -1,15 +1,19 @@
-import { useRandomHexaColor } from "@/hooks/useHexaColors"
-import { useRef, useState } from "react";
-import { useEffect } from "react";
+import { useRandomHexaColor } from '@/hooks/useHexaColors'
+import { useContext, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { tw, style } from 'twind/style';
-
+import { ColorContext } from '@/context/HexaColorContext';
 
 function ColorCanvas () {
+
+    const { colorState } = useContext(ColorContext)
+    const { color } = colorState
 
     const [boxStyles, set_BoxStyles] = useState('')
     const canvasRef: any = useRef()
 
-    const drawCanvas = () => {
+    const drawCanvas = async () => {
+        
         const canvas = canvasRef.current;
         const context = canvas.getContext("2d")
 
@@ -18,17 +22,19 @@ function ColorCanvas () {
         canvas.width = canvas.offsetWidth;
         canvas.height = canvas.offsetHeight;
         
-        context.fillStyle = `#${useRandomHexaColor()}`
-        context.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+        context.fillStyle = `#${color}`
+        context.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height); 
     }
     
     useEffect(() => {
+        console.log('LogfromCanvasUseEffect', color );
+
        drawCanvas()
-    }, [])
+    }, [colorState])
 
     return (
         <>
-         <h1 className={tw`text-center text-4xl font-mono`}>Which color?</h1>
+         <h1 className={tw`text-center text-4xl font-mono`}> Which color? </h1>
          <div className={tw`w-[320px] h-[300px]`}>
             <canvas ref={canvasRef}></canvas>
          </div>

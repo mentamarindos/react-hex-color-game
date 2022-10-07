@@ -9,7 +9,7 @@ function App() {
       <div>
         <ColorCanvas/>
         <ButtonLayout>
-          { [...Array(3).keys()].map( ()=> <GameButton/>) }
+          { [...Array(3).keys()].map( (el, index)=> <GameButton key={index} />) }
         </ButtonLayout>
       </div>
     </MainLayout>
