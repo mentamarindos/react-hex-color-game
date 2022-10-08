@@ -1,20 +1,26 @@
 import { tw } from 'twind/style';
 import { useColorContext, useCopyToClipboard } from '@/hooks/custom';
+import Confetti from 'react-confetti';
+import { useState } from 'react';
 
+const WINDOW_WIDTH = window.innerWidth
 
 export const GameButton = (props: any) => {
 
-    const { colorName } = props
+    const { colorName } = props;
+    const [showConfetti, SetshowConfetti] = useState(false)
     const { selectedColor, generateNewColor, setDisplayMsg } = useColorContext() 
     const [ copiedText, copy ] = useCopyToClipboard()
     
     const checkMatchingColor = (event: any) => {
         if(selectedColor == event.target.name) {
             copy('#'+selectedColor)
-            setDisplayMsg("Success!")
+            SetshowConfetti(true)
+            setDisplayMsg('')
             setTimeout(() => {
+                SetshowConfetti(false)
                 generateNewColor()
-            }, 2000);
+            }, 1200);
         } else {
             setDisplayMsg(`try again!`) 
         }
@@ -32,7 +38,10 @@ export const GameButton = (props: any) => {
     const ButtonStyles = tw(BaseButtonStyles) 
 
     return (
-        <>
+        <>   
+            {
+                showConfetti && <Confetti width={WINDOW_WIDTH} height={500}></Confetti>
+            }  
             <button className={ButtonStyles}
             name={colorName}
             onClick={ checkMatchingColor }> 
