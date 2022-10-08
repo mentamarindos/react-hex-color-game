@@ -1,15 +1,17 @@
 import { tw } from 'twind/style';
-import { useColorContext } from '@/hooks/useColorContext';
+import { useColorContext, useCopyToClipboard } from '@/hooks/custom';
 
 
 export const GameButton = (props: any) => {
 
     const { colorName } = props
     const { selectedColor, generateNewColor } = useColorContext() 
+    const [ copiedText, copy ] = useCopyToClipboard()
 
     const checkMatchingColor = (event: any) => {
-        if(selectedColor == event.target.name){
-           generateNewColor(null)
+        if(selectedColor == event.target.name) {
+            copy('#'+selectedColor)
+            generateNewColor(null)
         }
     }
 

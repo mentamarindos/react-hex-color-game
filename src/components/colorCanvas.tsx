@@ -1,4 +1,4 @@
-import { useColorContext } from '@/hooks/useColorContext';
+import { useColorContext } from '@/hooks/custom';
 import { useRef } from 'react';
 import { useEffect } from 'react';
 import { tw } from 'twind/style';
