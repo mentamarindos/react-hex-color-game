@@ -7,5 +7,6 @@ export interface IColorPayload {
     allColors: string[],
     difficulty: (1 | 2 | 3)
     level: number,
-    winCounter: number
+    winCounter: number,
+    DisplayMsg?: string
 }

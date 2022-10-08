@@ -5,14 +5,20 @@ import { useColorContext, useCopyToClipboard } from '@/hooks/custom';
 export const GameButton = (props: any) => {
 
     const { colorName } = props
-    const { selectedColor, generateNewColor } = useColorContext() 
+    const { selectedColor, generateNewColor, setDisplayMsg } = useColorContext() 
     const [ copiedText, copy ] = useCopyToClipboard()
-
+    
     const checkMatchingColor = (event: any) => {
         if(selectedColor == event.target.name) {
             copy('#'+selectedColor)
-            generateNewColor(null)
+            setDisplayMsg("Success!")
+            setTimeout(() => {
+                generateNewColor()
+            }, 2000);
+        } else {
+            setDisplayMsg(`try again!`) 
         }
+    
     }
 
     const BaseButtonStyles = tw`hover:bg-blue-300
@@ -29,7 +35,7 @@ export const GameButton = (props: any) => {
         <>
             <button className={ButtonStyles}
             name={colorName}
-            onClick={ (e) => checkMatchingColor(e) }> 
+            onClick={ checkMatchingColor }> 
                 #{ colorName } 
             </button>
         </>

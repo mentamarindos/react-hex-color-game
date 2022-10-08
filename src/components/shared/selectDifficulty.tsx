@@ -1,10 +1,10 @@
-import { useColorContext } from '@/hooks/useColorContext'
+import { useColorContext } from '@/hooks/custom/useColorContext'
 import { ChangeEvent } from 'react';
 import { tw } from 'twind'
 
 export const SelectDifficulty = () => {
   
-  const { colorState, dispatch, generateNewColor } = useColorContext()
+  const { dispatch } = useColorContext()
   
   const changeDifficulty = ({target}: any): void => {
     dispatch({ type: 'CHANGE_DIFFICULTY', payload: {difficulty: target.value} })

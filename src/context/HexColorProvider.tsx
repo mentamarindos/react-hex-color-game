@@ -8,7 +8,8 @@ const INITIAL_STATE: IColorPayload = {
     allColors: [],
     difficulty: 1,
     level: 0,
-    winCounter: 0
+    winCounter: 0,
+    DisplayMsg: ''
 }
 
 export const ColorContextProvider = ({children}: IChildrenProp) => {
