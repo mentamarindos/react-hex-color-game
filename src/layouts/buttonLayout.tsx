@@ -4,7 +4,7 @@ import { IChildrenProp } from "@/interfaces";
 
 export const ButtonLayout = ({ children }: IChildrenProp) => {
     return (
-        <div className={ tw`flex gap-2 p-2 m-1` }> 
+        <div className={ tw`flex place-content-between gap-2 p-2 w-[100%]` }> 
             { children }
         </div>
     )

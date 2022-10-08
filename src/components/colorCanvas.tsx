@@ -8,12 +8,14 @@ function ColorCanvas () {
 
     const { colorState } = useContext(ColorContext)
     const { color } = colorState
-
-    const [boxStyles, set_BoxStyles] = useState('')
     const canvasRef: any = useRef()
+    
+    useEffect(() => {
+        drawCanvas()
+     }, [colorState])
 
-    const drawCanvas = async () => {
-        
+
+    const drawCanvas = async () => {        
         const canvas = canvasRef.current;
         const context = canvas.getContext("2d")
 
@@ -26,16 +28,10 @@ function ColorCanvas () {
         context.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height); 
     }
     
-    useEffect(() => {
-        console.log('LogfromCanvasUseEffect', color );
-
-       drawCanvas()
-    }, [colorState])
-
     return (
         <>
          <h1 className={tw`text-center text-4xl font-mono`}> Which color? </h1>
-         <div className={tw`w-[320px] h-[300px]`}>
+         <div className={tw`w-[372px] h-[300px] my-3`}>
             <canvas ref={canvasRef}></canvas>
          </div>
         </>
