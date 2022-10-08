@@ -4,11 +4,18 @@ import { useRandomHexaColor } from '@/hooks/useHexaColors'
 import { ColorContext } from '@/context/HexaColorContext';
 
 
-function GameButton () {
+export const GameButton = (props: any) => {
 
-    const { colorState: {color} ,generateNewColor } = useContext(ColorContext) 
+    const { colorName } = props
+    const { generateNewColor, colorState: { selectedColor } } = useContext(ColorContext) 
 
-    const BaseButtonStyles = tw`:hover:bg-blue-300
+    const checkMatchingColor = (event: any) => {
+        if(selectedColor == event.target.name){
+           generateNewColor(6)
+        }
+    }
+
+    const BaseButtonStyles = tw`hover:bg-blue-300
     w-[100%]
     text-gray-900
     font-sans
@@ -20,10 +27,11 @@ function GameButton () {
 
     return (
         <>
-        <button className={ButtonStyles} onClick={ generateNewColor }> #{ color } </button>
+            <button className={ButtonStyles}
+            name={colorName}
+            onClick={ (e) => checkMatchingColor(e) }> 
+                #{ colorName } 
+            </button>
         </>
     )
 }
-
-
-export default GameButton

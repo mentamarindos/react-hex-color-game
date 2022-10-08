@@ -1,12 +1,14 @@
-type ColorAction = { type: 'GENERATE_COLOR'|string, payload: { color: string }  }
+import { IColorPayload } from "@/interfaces"
 
-export const ColorReducer = (state: any, action: ColorAction): any => {
-    switch (action.type){
-      case "GENERATE_COLOR":
-        return action.payload 
+type ColorAction = { type: 'GENERATE_COLOR'|string, payload: IColorPayload  }
+
+export const ColorReducer = (state: any, action: ColorAction): IColorPayload => {
+
+    switch (action.type) {
+        case "GENERATE_COLOR":
+            return action.payload 
         default:
-            return {
-                state 
-            }
+            return state 
     }
+
 }

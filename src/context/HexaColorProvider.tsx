@@ -1,23 +1,31 @@
 import { useReducer } from "react";
 import { ColorContext } from '@/context/HexaColorContext'
 import { ColorReducer } from '@/context/HexaColorReducer'
-import { IChildrenProp } from "@/interfaces";
+import { IChildrenProp, IColorPayload } from "@/interfaces";
 import { useRandomHexaColor } from '@/hooks/useHexaColors'
 
-const INITIAL_STATE: {color: string} = {
-    color: 'FF3434'
+const INITIAL_STATE: IColorPayload = {
+    selectedColor: '',
+    allColors: []
 }
 
 export const ColorContextProvider = ({children}: IChildrenProp) => {
 
     const [colorState, dispatch] = useReducer( ColorReducer, INITIAL_STATE ); 
 
-    const generateNewColor = async () => {
-        const newColor = useRandomHexaColor() 
-        const _payload = { type: 'GENERATE_COLOR', payload: { color: newColor } }       
+    const generateNewColor = (quantity: number) => {
+
+        const allColors = useRandomHexaColor(quantity)
+        
+        const selectedColor = allColors[Math.floor(Math.random() * allColors.length)];
+
+        const _payload = { 
+            type: 'GENERATE_COLOR', payload: { selectedColor, allColors } 
+        }
+
         dispatch(_payload)
     }
-
+    
     return (
         <ColorContext.Provider value={{colorState, generateNewColor}}>
         { children }

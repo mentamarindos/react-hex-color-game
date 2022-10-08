@@ -1,7 +1,6 @@
-import { useEffect, useRef } from "react";
 import ColorCanvas from "@/components/colorCanvas";
-import GameButton from "@/components/gameButtons";
-import { ButtonLayout, MainLayout } from '@/layouts';
+import { ButtonBoard} from "@/components/buttonBoard";
+import { MainLayout } from '@/layouts';
 import { tw } from "twind";
 
 function App() {
@@ -9,9 +8,7 @@ function App() {
     <MainLayout>
       <div className={tw`grid justify-center`}>
         <ColorCanvas/>
-        <ButtonLayout>
-          { [...Array(3).keys()].map( (el, index)=> <GameButton key={index} />) }
-        </ButtonLayout>
+        <ButtonBoard/>
       </div>
     </MainLayout>
   )

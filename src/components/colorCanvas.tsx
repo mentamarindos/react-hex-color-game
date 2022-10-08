@@ -7,25 +7,24 @@ import { ColorContext } from '@/context/HexaColorContext';
 function ColorCanvas () {
 
     const { colorState } = useContext(ColorContext)
-    const { color } = colorState
+    const { selectedColor } = colorState
     const canvasRef: any = useRef()
 
     useEffect(() => {
         drawCanvas()
      }, [colorState])
 
+    const drawCanvas = async () => {
+        const canvas = canvasRef.current
+        const context = canvas.getContext("2d") 
 
-    const drawCanvas = async () => {        
-        const canvas = canvasRef.current;
-        const context = canvas.getContext("2d")
-
-        canvas.style.width = "100%";
-        canvas.style.height = "100%";
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
+        canvas.style.width = "100%"
+        canvas.style.height = "100%"
+        canvas.width = canvas.offsetWidth
+        canvas.height = canvas.offsetHeight
         
-        context.fillStyle = `#${color}`
-        context.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height); 
+        context.fillStyle = `#${selectedColor}`; 
+        context.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height)
     }
     
     return (
