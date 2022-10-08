@@ -1,17 +1,15 @@
-import { useState, useContext } from 'react';
 import { tw } from 'twind/style';
-import { useRandomHexaColor } from '@/hooks/useHexaColors'
-import { ColorContext } from '@/context/HexaColorContext';
+import { useColorContext } from '@/hooks/useColorContext';
 
 
 export const GameButton = (props: any) => {
 
     const { colorName } = props
-    const { generateNewColor, colorState: { selectedColor } } = useContext(ColorContext) 
+    const { selectedColor, generateNewColor } = useColorContext() 
 
     const checkMatchingColor = (event: any) => {
         if(selectedColor == event.target.name){
-           generateNewColor(6)
+           generateNewColor(null)
         }
     }
 
@@ -23,7 +21,7 @@ export const GameButton = (props: any) => {
     font-extrabold
     bg-blue-200
     `
-    const ButtonStyles = tw(BaseButtonStyles)
+    const ButtonStyles = tw(BaseButtonStyles) 
 
     return (
         <>

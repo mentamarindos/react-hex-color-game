@@ -1,18 +1,17 @@
-import { useRandomHexaColor } from '@/hooks/useHexaColors'
-import { useContext, useRef, useState } from 'react';
+import { useColorContext } from '@/hooks/useColorContext';
+import { useRef } from 'react';
 import { useEffect } from 'react';
-import { tw, style } from 'twind/style';
-import { ColorContext } from '@/context/HexaColorContext';
+import { tw } from 'twind/style';
+
 
 function ColorCanvas () {
 
-    const { colorState } = useContext(ColorContext)
-    const { selectedColor } = colorState
+    const { selectedColor } = useColorContext()
     const canvasRef: any = useRef()
 
     useEffect(() => {
         drawCanvas()
-     }, [colorState])
+     }, [selectedColor])
 
     const drawCanvas = async () => {
         const canvas = canvasRef.current

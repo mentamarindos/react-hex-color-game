@@ -1,4 +1,4 @@
-import { useRandomHexaColor } from "@/hooks/useHexaColors"
+import { useRandomHexaColor } from "@/hooks/useHexGenerator"
 import { useState } from "react";
 import { useEffect } from "react";
 import { tw, style } from 'twind/style';

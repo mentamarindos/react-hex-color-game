@@ -4,5 +4,6 @@ export interface IChildrenProp {
 
 export interface IColorPayload {
     selectedColor: string,
-    allColors: string[]
+    allColors: string[],
+    difficulty?: (1 | 2 | 3)
 }
