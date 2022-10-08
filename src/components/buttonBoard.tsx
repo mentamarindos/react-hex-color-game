@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { tw } from 'twind'
-import { GameButton } from '@/components/gameButtons';
-import { DisplayMsg } from '@/components/displayMsg';
+import { GameButton, DisplayMsg } from '@/components';
 import { useColorContext } from '@/hooks/useColorContext';
 
 
@@ -11,7 +10,7 @@ export const ButtonBoard = () => {
     const { allColors, generateNewColor } = useColorContext()
     
     useEffect( () => {
-       generateNewColor()
+       generateNewColor(null)
     },[])
 
     return (

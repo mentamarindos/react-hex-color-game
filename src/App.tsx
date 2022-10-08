@@ -1,7 +1,6 @@
-import ColorCanvas from "@/components/colorCanvas";
-import { ButtonBoard} from "@/components/buttonBoard";
 import { MainLayout } from '@/layouts';
 import { tw } from "twind";
+import { ButtonBoard, ColorCanvas} from "@/components";
 
 function App() {
   return (

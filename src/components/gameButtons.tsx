@@ -32,4 +32,5 @@ export const GameButton = (props: any) => {
             </button>
         </>
     )
+    
 }

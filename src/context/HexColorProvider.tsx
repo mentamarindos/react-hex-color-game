@@ -7,7 +7,9 @@ import { useRandomHexaColor } from '@/hooks/useHexGenerator'
 const INITIAL_STATE: IColorPayload = {
     selectedColor: '',
     allColors: [],
-    difficulty: 1
+    difficulty: 1,
+    level: 0,
+    winCounter: 0
 }
 
 export const ColorContextProvider = ({children}: IChildrenProp) => {
@@ -22,11 +24,18 @@ export const ColorContextProvider = ({children}: IChildrenProp) => {
         
         const selectedColor = allColors[Math.floor(Math.random() * allColors.length)];
 
-        const _payload = { 
-            type: 'GENERATE_COLOR', payload: { selectedColor, allColors } 
+        const payload: IColorPayload = {
+            ...colorState,
+            selectedColor, 
+            allColors,
+            level: colorState.level++,
+        } 
+
+        const _Values = { 
+            type: 'GENERATE_COLOR', payload
         }
 
-        dispatch(_payload)
+        dispatch(_Values)
     }
     
     return (

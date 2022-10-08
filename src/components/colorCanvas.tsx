@@ -3,8 +3,7 @@ import { useRef } from 'react';
 import { useEffect } from 'react';
 import { tw } from 'twind/style';
 
-
-function ColorCanvas () {
+export const ColorCanvas = () => {
 
     const { selectedColor } = useColorContext()
     const canvasRef: any = useRef()
@@ -35,5 +34,3 @@ function ColorCanvas () {
         </>
     )
 }
-
-export default ColorCanvas
