@@ -9,7 +9,7 @@ function ColorCanvas () {
     const { colorState } = useContext(ColorContext)
     const { color } = colorState
     const canvasRef: any = useRef()
-    
+
     useEffect(() => {
         drawCanvas()
      }, [colorState])
@@ -30,7 +30,7 @@ function ColorCanvas () {
     
     return (
         <>
-         <h1 className={tw`text-center text-4xl font-mono`}> Which color? </h1>
+         <h1 className={tw`text-center text-4xl font-mono`}> What color is it? </h1>
          <div className={tw`w-[372px] h-[300px] my-3`}>
             <canvas ref={canvasRef}></canvas>
          </div>
