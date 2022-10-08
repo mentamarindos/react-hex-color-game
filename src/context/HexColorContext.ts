@@ -1,9 +1,9 @@
 import { IColorPayload } from "@/interfaces";
 import React, { createContext } from "react";
 
-export type ColorContextPros = {
+export type ColorContextProps = {
     colorState: IColorPayload,
-    generateNewColor: React.Dispatch<any>
+    dispatch: React.Dispatch<any>,
 }
 
-export const ColorContext = createContext<ColorContextPros>({} as ColorContextPros);
+export const ColorContext = createContext<ColorContextProps>({} as ColorContextProps);

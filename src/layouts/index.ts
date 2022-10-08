@@ -1,3 +1,4 @@
-import { MainLayout } from "@/layouts/main";
+import { MainLayout } from "@/layouts/mainLayout";
+import { PageFooter } from "@/layouts/footer";
 
-export { MainLayout }
+export { MainLayout, PageFooter }
