@@ -28,7 +28,6 @@ export const GameButton = (props: any) => {
             copy('#'+selectedColor)
 
             SetshowConfetti(true)
-            setDisplayMsg('Yuppy')
             setIsAnswerCorrect(true)
 
             setTimeout(() => {
