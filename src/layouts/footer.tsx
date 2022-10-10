@@ -1,4 +1,4 @@
-import { IChildrenProp } from "@/interfaces"
+import { IChildrenProp } from "@/ts/interfaces"
 import { tw } from "twind"
 
 export const PageFooter = ({children}: IChildrenProp) => {

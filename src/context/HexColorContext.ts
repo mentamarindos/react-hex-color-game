@@ -1,4 +1,4 @@
-import { IColorPayload } from "@/interfaces";
+import { IColorPayload } from "@/ts/interfaces";
 import React, { createContext } from "react";
 
 export type ColorContextProps = {

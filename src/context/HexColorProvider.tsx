@@ -1,7 +1,7 @@
-import { useContext, useReducer } from "react";
+import { useReducer } from "react";
 import { ColorContext } from '@/context/HexColorContext'
 import { ColorReducer } from '@/context/HexColorReducer'
-import { IChildrenProp, IColorPayload } from "@/interfaces";
+import { IChildrenProp, IColorPayload } from "@/ts/interfaces";
 
 const INITIAL_STATE: IColorPayload = {
     selectedColor: '',

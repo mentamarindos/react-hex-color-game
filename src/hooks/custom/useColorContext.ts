@@ -1,7 +1,8 @@
 import { useContext } from "react"
 import { ColorContext } from '@/context/HexColorContext';
 import { useRandomHexaColor } from '@/hooks/custom/useHexGenerator'
-import { IColorPayload } from "@/interfaces";
+import { IColorPayload } from "@/ts/interfaces";
+import { Actions } from "@/ts/enums"
 
 export const useColorContext = () => {
 
@@ -21,12 +22,12 @@ export const useColorContext = () => {
             level: colorState.level++,
         } 
 
-        const _Values = { type: 'GENERATE_COLOR', payload }
+        const _Values = { type: Actions.GENERATE_COLOR, payload }
         dispatch(_Values)
     }
 
     const setDisplayMsg = (msg: string) => {
-        dispatch({ type:'SET_DISPLAY_MSG', payload:{ DisplayMsg: msg } }) 
+        dispatch({ type: Actions.SET_DISPLAY_MSG, payload:{ DisplayMsg: msg } }) 
     }
 
     return {

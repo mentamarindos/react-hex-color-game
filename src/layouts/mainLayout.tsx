@@ -1,5 +1,5 @@
 import { tw } from "twind"
-import { IChildrenProp } from "@/interfaces";
+import { IChildrenProp } from "@/ts/interfaces";
 
 export const MainLayout = ({ children }: IChildrenProp) => {
     return (
